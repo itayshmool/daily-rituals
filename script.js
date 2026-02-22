@@ -16,6 +16,7 @@ const emojiOptions = document.querySelectorAll('.emoji-option');
 const selectedEmojiDisplay = document.getElementById('selected-emoji');
 const customEmojiDisplay = document.getElementById('custom-emoji-display');
 const shareBtn = document.getElementById('share-btn');
+const copyBtn = document.getElementById('copy-btn');
 
 // Set today's date as default
 const today = new Date().toISOString().split('T')[0];
@@ -137,7 +138,9 @@ function updateShareButton() {
     const hasDate = state.selectedDate !== null;
     const hasSelections = state.selectedRituals.size > 0 || state.customEmojis.size > 0;
 
-    shareBtn.disabled = !(hasDate && hasSelections);
+    const isEnabled = hasDate && hasSelections;
+    shareBtn.disabled = !isEnabled;
+    copyBtn.disabled = !isEnabled;
 }
 
 // Share functionality
@@ -162,6 +165,30 @@ shareBtn.addEventListener('click', async () => {
 
     // Add celebration animation
     celebrateShare();
+});
+
+// Copy button functionality
+copyBtn.addEventListener('click', async () => {
+    const message = generateShareMessage();
+
+    try {
+        await navigator.clipboard.writeText(message);
+
+        // Show success state
+        const originalIcon = copyBtn.querySelector('.copy-icon').textContent;
+        copyBtn.querySelector('.copy-icon').textContent = '✓';
+        copyBtn.classList.add('copied');
+
+        showNotification('Copied to clipboard! 📋');
+
+        // Reset after 2 seconds
+        setTimeout(() => {
+            copyBtn.querySelector('.copy-icon').textContent = originalIcon;
+            copyBtn.classList.remove('copied');
+        }, 2000);
+    } catch (err) {
+        showNotification('Failed to copy. Please try again.');
+    }
 });
 
 // Generate share message
