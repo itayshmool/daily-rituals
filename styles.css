@@ -284,6 +284,89 @@ body {
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
+/* Sleep Grid */
+.sleep-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+}
+
+.sleep-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    padding: var(--space-md);
+    background: white;
+    border: 3px solid #B8C5FF;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.sleep-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #6B7FFF 0%, #4D5ECC 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.sleep-btn:hover {
+    transform: translateY(-4px) scale(1.02);
+    border-color: #6B7FFF;
+    box-shadow: 0 8px 24px rgba(107, 127, 255, 0.3);
+}
+
+.sleep-btn:active {
+    transform: translateY(-2px) scale(0.98);
+}
+
+.sleep-btn.selected {
+    border-color: #4D5ECC;
+    box-shadow: 0 8px 24px rgba(77, 94, 204, 0.4);
+}
+
+.sleep-btn.selected::before {
+    opacity: 1;
+}
+
+.sleep-icon,
+.sleep-name {
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.sleep-icon {
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+.sleep-name {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.sleep-btn.selected .sleep-name {
+    color: white;
+}
+
+.sleep-btn.selected .sleep-icon {
+    transform: scale(1.1);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
 /* Emoji Picker */
 .emoji-picker-wrapper {
     position: relative;
@@ -350,8 +433,27 @@ body {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: var(--space-xs);
-    max-height: 200px;
+    max-height: 300px;
     overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-olive) transparent;
+}
+
+.emoji-grid::-webkit-scrollbar {
+    width: 6px;
+}
+
+.emoji-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.emoji-grid::-webkit-scrollbar-thumb {
+    background: var(--color-olive);
+    border-radius: 3px;
+}
+
+.emoji-grid::-webkit-scrollbar-thumb:hover {
+    background: var(--color-forest);
 }
 
 .emoji-option {
@@ -550,6 +652,10 @@ body {
 
 .date-section {
     animation-delay: 0.3s;
+}
+
+.sleep-section {
+    animation-delay: 0.35s;
 }
 
 .rituals-section {

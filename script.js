@@ -1,12 +1,14 @@
 // State management
 const state = {
     selectedDate: null,
+    selectedSleep: null,
     selectedRituals: new Set(),
     customEmojis: new Set()
 };
 
 // DOM elements
 const datePicker = document.getElementById('date-picker');
+const sleepButtons = document.querySelectorAll('.sleep-btn');
 const ritualButtons = document.querySelectorAll('.ritual-btn');
 const emojiTrigger = document.getElementById('emoji-trigger');
 const emojiPicker = document.getElementById('emoji-picker');
@@ -24,6 +26,26 @@ state.selectedDate = today;
 datePicker.addEventListener('change', (e) => {
     state.selectedDate = e.target.value;
     updateShareButton();
+});
+
+// Sleep selection handler (single-select)
+sleepButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const sleep = btn.dataset.sleep;
+
+        // Remove selection from all sleep buttons
+        sleepButtons.forEach(b => b.classList.remove('selected'));
+
+        // Toggle current selection
+        if (state.selectedSleep === sleep) {
+            state.selectedSleep = null;
+        } else {
+            state.selectedSleep = sleep;
+            btn.classList.add('selected');
+        }
+
+        updateShareButton();
+    });
 });
 
 // Ritual selection handler (multi-select)
@@ -151,6 +173,20 @@ function generateShareMessage() {
         year: 'numeric'
     });
 
+    const sleepEmojis = {
+        great: '😊',
+        ok: '😐',
+        bad: '😞',
+        nightmare: '😱'
+    };
+
+    const sleepLabels = {
+        great: 'Great',
+        ok: 'OK',
+        bad: 'Bad',
+        nightmare: 'Nightmare'
+    };
+
     const ritualEmojis = {
         coffee: '☕',
         learning: '📚',
@@ -159,6 +195,13 @@ function generateShareMessage() {
     };
 
     let message = `✨ My Daily Rituals - ${formattedDate}\n\n`;
+
+    // Add sleep quality
+    if (state.selectedSleep) {
+        const emoji = sleepEmojis[state.selectedSleep];
+        const label = sleepLabels[state.selectedSleep];
+        message += `Sleep: ${emoji} ${label}\n\n`;
+    }
 
     // Add selected rituals
     if (state.selectedRituals.size > 0) {
