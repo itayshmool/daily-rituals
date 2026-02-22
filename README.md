@@ -32,7 +32,9 @@ Simply open `index.html` in your browser. No build process required!
 
 ## Deployment
 
-Deployed on GitHub Pages at: [Your URL will be here]
+Deployed on GitHub Pages at: https://itayshmool.github.io/daily-rituals/
+
+GitHub Repository: https://github.com/itayshmool/daily-rituals
 
 ---
 
