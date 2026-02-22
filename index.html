@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Rituals ✨</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="grain-overlay"></div>
+
+    <main class="container">
+        <header class="header">
+            <h1 class="title">
+                <span class="title-main">Daily Rituals</span>
+                <span class="title-sub">What brought you joy today?</span>
+            </h1>
+        </header>
+
+        <div class="card">
+            <!-- Date Picker Section -->
+            <section class="section date-section">
+                <label for="date-picker" class="label">
+                    <span class="label-icon">📅</span>
+                    <span class="label-text">Pick your day</span>
+                </label>
+                <input type="date" id="date-picker" class="date-input" required>
+            </section>
+
+            <!-- Ritual Selection -->
+            <section class="section rituals-section">
+                <div class="label">
+                    <span class="label-icon">✨</span>
+                    <span class="label-text">Your rituals</span>
+                </div>
+
+                <div class="rituals-grid">
+                    <button class="ritual-btn" data-ritual="coffee" type="button">
+                        <span class="ritual-icon">☕</span>
+                        <span class="ritual-name">Coffee</span>
+                    </button>
+
+                    <button class="ritual-btn" data-ritual="learning" type="button">
+                        <span class="ritual-icon">📚</span>
+                        <span class="ritual-name">Learning</span>
+                    </button>
+
+                    <button class="ritual-btn" data-ritual="working" type="button">
+                        <span class="ritual-icon">🔨</span>
+                        <span class="ritual-name">Working</span>
+                    </button>
+
+                    <button class="ritual-btn" data-ritual="fruit" type="button">
+                        <span class="ritual-icon">🍓</span>
+                        <span class="ritual-name">Fruit</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Custom Emoji Section -->
+            <section class="section emoji-section">
+                <div class="label">
+                    <span class="label-icon">🎨</span>
+                    <span class="label-text">Add your own (optional)</span>
+                </div>
+
+                <div class="emoji-picker-wrapper">
+                    <button class="emoji-trigger" id="emoji-trigger" type="button">
+                        <span id="selected-emoji" class="selected-emoji">➕</span>
+                        <span class="emoji-trigger-text">Pick an emoji</span>
+                    </button>
+
+                    <div class="emoji-picker" id="emoji-picker" style="display: none;">
+                        <div class="emoji-grid">
+                            <button class="emoji-option" data-emoji="🎵">🎵</button>
+                            <button class="emoji-option" data-emoji="🏃">🏃</button>
+                            <button class="emoji-option" data-emoji="🧘">🧘</button>
+                            <button class="emoji-option" data-emoji="🎨">🎨</button>
+                            <button class="emoji-option" data-emoji="🎮">🎮</button>
+                            <button class="emoji-option" data-emoji="🍕">🍕</button>
+                            <button class="emoji-option" data-emoji="🌱">🌱</button>
+                            <button class="emoji-option" data-emoji="💪">💪</button>
+                            <button class="emoji-option" data-emoji="🎬">🎬</button>
+                            <button class="emoji-option" data-emoji="🎯">🎯</button>
+                            <button class="emoji-option" data-emoji="🚴">🚴</button>
+                            <button class="emoji-option" data-emoji="🧑‍🍳">🧑‍🍳</button>
+                            <button class="emoji-option" data-emoji="🎸">🎸</button>
+                            <button class="emoji-option" data-emoji="📝">📝</button>
+                            <button class="emoji-option" data-emoji="🌟">🌟</button>
+                            <button class="emoji-option" data-emoji="💡">💡</button>
+                            <button class="emoji-option" data-emoji="🎭">🎭</button>
+                            <button class="emoji-option" data-emoji="🌈">🌈</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="custom-emoji-display" class="custom-emoji-display"></div>
+            </section>
+
+            <!-- Share Button -->
+            <section class="section share-section">
+                <button class="share-btn" id="share-btn" disabled>
+                    <span class="share-icon">🎉</span>
+                    <span class="share-text">Share My Day</span>
+                </button>
+            </section>
+        </div>
+
+        <footer class="footer">
+            <p class="footer-text">Celebrate the little moments ✨</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
