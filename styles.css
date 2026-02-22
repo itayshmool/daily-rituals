@@ -296,15 +296,16 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: var(--space-xs);
-    padding: var(--space-md);
+    gap: var(--space-sm);
+    padding: var(--space-lg) var(--space-md);
     background: white;
-    border: 3px solid #B8C5FF;
+    border: 3px solid #D4C4FF;
     border-radius: var(--radius-md);
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    min-height: 120px;
 }
 
 .sleep-btn::before {
@@ -314,7 +315,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #6B7FFF 0%, #4D5ECC 100%);
+    background: linear-gradient(135deg, #9B8FFF 0%, #7B68EE 100%);
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 0;
@@ -322,8 +323,8 @@ body {
 
 .sleep-btn:hover {
     transform: translateY(-4px) scale(1.02);
-    border-color: #6B7FFF;
-    box-shadow: 0 8px 24px rgba(107, 127, 255, 0.3);
+    border-color: #9B8FFF;
+    box-shadow: 0 8px 24px rgba(155, 143, 255, 0.3);
 }
 
 .sleep-btn:active {
@@ -331,8 +332,8 @@ body {
 }
 
 .sleep-btn.selected {
-    border-color: #4D5ECC;
-    box-shadow: 0 8px 24px rgba(77, 94, 204, 0.4);
+    border-color: #7B68EE;
+    box-shadow: 0 8px 24px rgba(123, 104, 238, 0.4);
 }
 
 .sleep-btn.selected::before {
@@ -347,13 +348,13 @@ body {
 }
 
 .sleep-icon {
-    font-size: 2.5rem;
+    font-size: 3rem;
     line-height: 1;
 }
 
 .sleep-name {
     font-family: var(--font-display);
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--color-text);
 }
@@ -363,7 +364,7 @@ body {
 }
 
 .sleep-btn.selected .sleep-icon {
-    transform: scale(1.1);
+    transform: scale(1.15);
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
@@ -618,16 +619,23 @@ body {
         font-size: 2.5rem;
     }
 
-    .rituals-grid {
+    .rituals-grid,
+    .sleep-grid {
         gap: var(--space-xs);
     }
 
-    .ritual-btn {
+    .ritual-btn,
+    .sleep-btn {
         padding: var(--space-sm);
+        min-height: 100px;
     }
 
     .ritual-icon {
         font-size: 2rem;
+    }
+
+    .sleep-icon {
+        font-size: 2.5rem;
     }
 
     .emoji-grid {
