@@ -148,7 +148,7 @@ shareBtn.addEventListener('click', async () => {
     if (navigator.share) {
         try {
             await navigator.share({
-                title: 'My Daily Rituals ✨',
+                title: 'What I Need Today ✨',
                 text: message
             });
         } catch (err) {
@@ -194,7 +194,7 @@ function generateShareMessage() {
         fruit: '🍓'
     };
 
-    let message = `✨ My Daily Rituals - ${formattedDate}\n\n`;
+    let message = `✨ What I Need Today - ${formattedDate}\n\n`;
 
     // Add sleep quality
     if (state.selectedSleep) {
@@ -205,7 +205,7 @@ function generateShareMessage() {
 
     // Add selected rituals
     if (state.selectedRituals.size > 0) {
-        message += 'Today I enjoyed:\n';
+        message += 'What we do today:\n';
         state.selectedRituals.forEach(ritual => {
             const emoji = ritualEmojis[ritual];
             const name = ritual.charAt(0).toUpperCase() + ritual.slice(1);
@@ -222,7 +222,7 @@ function generateShareMessage() {
         message += '\n';
     }
 
-    message += '\n🎉 Celebrate the little moments!';
+    message += '\nHave a nice day ❤️';
 
     return message;
 }
